@@ -6,7 +6,7 @@ import classNames from 'classnames'
 import Badge from '../Badge'
 import removeSvg from '../../assets/img/close.svg'
 
-const List = ({ items, isRemovable, onClick, onRemove }) => {   
+const List = ({ items, isRemovable, onClick, onRemove, onClickItem, activeItem }) => {   
     
     const removeList = (item) => {
         if (window.confirm(`Вы действительно хотите удалить раздел "${item.name}"?`)) {          
@@ -18,9 +18,9 @@ const List = ({ items, isRemovable, onClick, onRemove }) => {
     return (
         <ul onClick={onClick} className="list">
             {items.map((item, index) => {
-                return <li key={index} className={classNames(item.className, {'active': item.active})}>
+                return <li onClick={onClickItem ? () => onClickItem(item) : null} key={index} className={classNames(item.className, {'active': item.active ? item.active : activeItem && activeItem.id === item.id})}>
                     <i>{item.icon ? (item.icon) : (<Badge color={item.color.name}/>)}</i>
-                    <span>{item.name}</span>
+                    <span>{item.name}{item.tasks && ` (${item.tasks.length})`}</span>
                     {isRemovable && <img onClick={() => removeList(item)} className="list__remove-icon" src={removeSvg} alt="Remove icon" />}
                 </li>
             })}

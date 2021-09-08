@@ -44,6 +44,10 @@ body {
   border-radius: 4px;
   padding: 8px 12px;
   width: 100%;
+  font-size: 14px;
+  &::placeholder {
+    color: #C7C7C7;
+  }
   &:focus {
     border-color: #e0dfdf;
   }
@@ -55,12 +59,31 @@ body {
   color: #fff;
   border: 0;
   padding: 10px 20px;
-  cursor: pointer;
+  cursor: pointer; 
+  transition: 0.3s;
+  font-size: 14px;
+
   &:hover {
     background: darken($color: #4DD599, $amount: 5%);
   }
   &:active {
     background: darken($color: #4DD599, $amount: 10%);
+  }
+  &:disabled {
+    background: #d8d8d8;
+  }
+
+  &--grey {
+    background: #F4F6F8;
+    color: #444444;
+    transition: 0.3s;
+
+    &:hover {
+      background: darken($color: #F4F6F8, $amount: 3%);
+    }
+    &:active {
+      background: darken($color: #F4F6F8, $amount: 7%);
+    }
   }
 }
 
