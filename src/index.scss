@@ -4,6 +4,7 @@
   list-style: none;
   outline: none;
   font-family: 'Roboto', -apple-system, system-ui, sans-serif;
+  box-sizing: border-box;
 }
 
 body {  
@@ -17,7 +18,7 @@ body {
   left: 50%;
   top: 50%;
   width: 750px;
-  height: 530;
+  height: calc(100vh - 100px);
   transform: translate(-50%, -50%);
   box-shadow: 1px 2px 20px #f3f3f3;
   border-radius: 10px;
@@ -27,20 +28,31 @@ body {
   &__sidebar {
     background-color: #f4f6f8;
     width: 200px;
-    height: calc(100% - 120px);
+    // height: calc(100% - 120px);
+    height: 100%;
     border-right: 1px solid #f1f1f1;
     padding: 60px 20px;
   } 
+  
   &__tasks {
     flex: 1;
     padding: 60px;
+    overflow: auto; 
+    
+    &::-webkit-scrollbar {
+      width: 2px;
+      background-color: rgb(241, 241, 241)
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: rgb(243, 220, 220)
+    }
   }
 }
 
 .field {
   background: #FFFFFF;
   border: 1px solid #EFEFEF;
-  box-sizing: border-box;
   border-radius: 4px;
   padding: 8px 12px;
   width: 100%;
